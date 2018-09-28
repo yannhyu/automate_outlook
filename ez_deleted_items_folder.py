@@ -4,10 +4,15 @@ from win32com.client import constants
 outlook=win32com.client.Dispatch("Outlook.Application").GetNamespace("MAPI")
 
 # inbox = outlook.GetDefaultFolder(6)
-inbox = outlook.GetDefaultFolder(win32com.client.constants.olFolderInbox)
+# inbox = outlook.GetDefaultFolder(win32com.client.constants.olFolderInbox)
 
-messages=inbox.Items
 
+root_folder = outlook.Folders.Item(1)
+folder_deleted_items = root_folder.Folders['Deleted Items']
+
+messages=folder_deleted_items.Items
+
+print(f'Found {len(messages)} in Deleted Items folder')
 for message in messages:
     try:
         print("-"*70)
@@ -15,10 +20,9 @@ for message in messages:
         print(f'.Sender email: {message.Sender.Address}')
         print(f'.RE: {message.Subject}')
         print(f'Body: ... {message.Body[:150]}')
-        # print(message.Body)
-        # attachments = message.attachments
-        # for attachment in attachments:
-        #     pass
+
+        if 'Yu, Yann' in message.Sender.Name:
+            print(f'... deleting {message.Subject}')
+            message.Delete()        
     except AttributeError as attrerr:
-        print(attrerr)
-        print(f'Body: ... {message.Body[:150]}')
+        print(attrerr)     
