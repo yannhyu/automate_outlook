@@ -10,8 +10,10 @@ messages=inbox.Items
 
 for message in messages:
     print("-"*70)
-    print(message.Subject)
-    print(f'... {message.Body[:150]}')
+    print(f'.Sender Name: {message.Sender.Name}')
+    print(f'.Sender email: {message.Sender.Address}')
+    print(f'.RE: {message.Subject}')
+    print(f'Body: ... {message.Body[:150]}')
     # print(message.Body)
 
     # attachments = message.attachments
