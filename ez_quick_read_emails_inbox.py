@@ -13,12 +13,22 @@ for message in messages:
         print("-"*70)
         print(f'.Sender Name: {message.Sender.Name}')
         print(f'.Sender email: {message.Sender.Address}')
+        print(" "*40)
         print(f'.RE: {message.Subject}')
-        print(f'Body: ... {message.Body[:150]}')
+        # print(f'Body: ... {message.Body[:150]}')
+        print(f'Body: ... {" ".join(message.Body[:120].split())}')
+
         # print(message.Body)
         # attachments = message.attachments
         # for attachment in attachments:
         #     pass
     except AttributeError as attrerr:
-        print(attrerr)
-        print(f'Body: ... {message.Body[:150]}')
+        # print(attrerr)
+        print('. a meeting:')
+        print(f'.Subject: {message.Subject}')
+        print(f'.SenderName: {message.SenderName}')
+        # print(f'.Start: {message.Start}')
+        # print(f'.End: {message.End}')
+        # print(f'.Session: {message.Session}')
+        # print(f'.Body: {message.Body}')
+        # print(f'.Recipients: {message.Recipients}')

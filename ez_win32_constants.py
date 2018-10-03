@@ -21,4 +21,16 @@ how to reach any default folder not just "Inbox" here's the list:
 12 Notes
 13 Tasks
 14 Drafts
+
+Set myItem = myOlApp.CreateItem(olAppointmentItem) 
+ 
+myItem.MeetingStatus = olMeeting 
+ 
+myItem.Subject = "Strategy Meeting" 
+ 
+myItem.Location = "Conference Room B" 
+ 
+myItem.Start = #9/24/97 1:30:00 PM# 
+ 
+myItem.Duration = 90 
 '''
