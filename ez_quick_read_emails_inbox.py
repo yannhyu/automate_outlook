@@ -17,6 +17,7 @@ for message in messages:
         print(f'.RE: {message.Subject}')
         # print(f'Body: ... {message.Body[:150]}')
         print(f'Body: ... {" ".join(message.Body[:120].split())}')
+        message.Unread = False
 
         # print(message.Body)
         # attachments = message.attachments
