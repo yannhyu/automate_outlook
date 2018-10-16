@@ -1,8 +1,9 @@
 import win32com.client
 from win32com.client import constants
 
-sender_name = "Slack"
-target_folder = 'Slack'
+sender_name = "Invenco Cloud Services"
+sender_email = "no-reply@invencocloud.com"
+target_folder = 'Cloud_Automation'
 
 outlook=win32com.client.Dispatch("Outlook.Application").GetNamespace("MAPI")
 
@@ -16,9 +17,10 @@ root_folder = outlook.Folders.Item(1)
 folder_target = root_folder.Folders[target_folder]
 
 for message in messages:
-    # print(message.Sender.Address)
+    print(message.Sender.Address)
     try:
-        if sender_name in message.Sender.Name:
+        # if sender_name in message.Sender.Name:
+        if sender_email == message.Sender.Address:
             print("-"*70)
             print(f'.Subject: {message.Subject}')
             message.Move(folder_target)
