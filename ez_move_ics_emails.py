@@ -17,8 +17,8 @@ root_folder = outlook.Folders.Item(1)
 folder_target = root_folder.Folders[target_folder]
 
 for message in messages:
-    print(message.Sender.Address)
     try:
+        print(message.Sender.Address)
         # if sender_name in message.Sender.Name:
         if sender_email == message.Sender.Address:
             print("-"*70)

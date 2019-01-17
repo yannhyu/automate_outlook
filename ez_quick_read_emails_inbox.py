@@ -3,8 +3,8 @@ from win32com.client import constants
 
 outlook=win32com.client.Dispatch("Outlook.Application").GetNamespace("MAPI")
 
-# inbox = outlook.GetDefaultFolder(6)
-inbox = outlook.GetDefaultFolder(win32com.client.constants.olFolderInbox)
+inbox = outlook.GetDefaultFolder(6)
+# inbox = outlook.GetDefaultFolder(win32com.client.constants.olFolderInbox)
 
 messages=inbox.Items
 
